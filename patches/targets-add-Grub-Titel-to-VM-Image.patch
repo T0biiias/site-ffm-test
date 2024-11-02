@@ -1,0 +1,22 @@
+From 6c4ca8d0780566a8b2ae6ea3ab4e477abafd4fbe Mon Sep 17 00:00:00 2001
+From: Tobias <5702338+T0biii@users.noreply.github.com>
+Date: Sat, 2 Nov 2024 04:28:01 +0000
+Subject: [PATCH] add Grub Titel to VM Image
+
+---
+ targets/x86.inc | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/targets/x86.inc b/targets/x86.inc
+index f090a9e8..a609d460 100644
+--- a/targets/x86.inc
++++ b/targets/x86.inc
+@@ -1,5 +1,6 @@
+ config('VDI_IMAGES', true)
+ config('VMDK_IMAGES', true)
++config('GRUB_TITLE', 'Gluon')
+ 
+ packages {
+ 	'kmod-3c59x',
+-- 
+2.46.2
