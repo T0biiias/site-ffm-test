@@ -4,10 +4,6 @@ name: "Update Modules base"
 on:
   workflow_dispatch:
 
-permissions:
-  contents: write # so it can comment
-  pull-requests: write # so it can create pull requests
-
 jobs:
   update-Modules:
     runs-on: ubuntu-22.04
@@ -20,6 +16,12 @@ jobs:
 
       - name: Clone Firmware
         uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+
+      - name: Get GitHub App User ID
+        id: get-user-id
+        run: echo "user-id=$(gh api "/users/${{ steps.app-token.outputs.app-slug }}[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
 
       - name: Configure Git User and E-Mail
         env:
